@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-sm-10 col-xs-6">
+        <div class="form-group">
+            <form class="form-inline">
+                <input   [(ngModel)]="searchText" 
+                    name="search"
+                    class="form-control mr-sm-2" 
+                    type="text" placeholder="Search"/>
+            </form>
+        </div> 
+    </div>
+</div>
+<ul class="list-group">
+    
+    <li *ngFor="let rowDetail of data | filter:searchText | paginate: { itemsPerPage: itemPerPage, currentPage: p }; trackBy: identify" class="cus-cursor-pointer list-group-item">
+         <strong>
+            <ng-container
+                *ngIf="headerTemplateRef"
+                [ngTemplateOutlet]="headerTemplateRef"
+                [ngTemplateOutletContext]="{$implicit:rowDetail}"
+            >
+            </ng-container>
+        </strong>
+         <ng-container
+            *ngIf="bodyTemplateRef"
+            [ngTemplateOutlet]="bodyTemplateRef"
+            [ngTemplateOutletContext]="{$implicit:rowDetail}"
+        >
+        </ng-container>
+    </li>
+    <li *ngIf="data.length == 0" class="cus-cursor-pointer list-group-item">
+        Data is not available.
+    </li>
+    <!-- <header>tttt</header> -->
+</ul>
+
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
