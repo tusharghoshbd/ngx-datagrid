@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NgxDatagridComponent } from "./ngx-datagrid/ngx-datagrid.component";
 
 @Component({
   selector: 'app-root',

@@ -17,6 +17,7 @@ export class NgxDatagridComponent implements OnInit, AfterContentInit {
     searchText = "";
     itemPerPage = 5;
     itemPerPageDDL:any = [5,10,20,50];
+    currentPage = 1;
     itemClickEvent = true;
     constructor() { }
 
@@ -35,7 +36,7 @@ export class NgxDatagridComponent implements OnInit, AfterContentInit {
             this.itemClick.emit(item);
     }
 
-    private identify(index, item) {
+    identify(index, item) {
         return index;
     }
 
