@@ -1,7 +1,4 @@
-import { Component, OnInit, Input, TemplateRef, AfterContentInit, ContentChild } from '@angular/core';
-
-import { HeaderComponent } from "./header/header.component";
-
+import { Component, OnInit, Input, Output, TemplateRef, AfterContentInit, ContentChild, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'ngx-datagrid',
@@ -11,15 +8,25 @@ import { HeaderComponent } from "./header/header.component";
 export class NgxDatagridComponent implements OnInit, AfterContentInit {
 
     @Input() data :any;
+    @Input() gridClass :any;
+    @Input() options :any;
+    @Output() itemClick: EventEmitter<any> = new EventEmitter<any>();
+    
     searchText = "";
     itemPerPage = 5;
+    itemPerPageDDL:any = [5,10,20,50];
+    itemClickEvent = true;
     constructor() { }
     //@ContentChild(HeaderComponent,{static: false}) headerComponent: HeaderComponent;
     @ContentChild('header',{static: false}) headerTemplateRef: TemplateRef<any>;
     @ContentChild('body',{static: false}) bodyTemplateRef: TemplateRef<any>;
 
     ngOnInit() {
-        //console.log(this.data);
+        if(this.options){
+            this.itemPerPageDDL = this.options.itemPerPageDDL.length == 0 ? this.itemPerPageDDL : this.options.itemPerPageDDL;
+            this.itemPerPage =  this.itemPerPageDDL[0];
+            this.itemClickEvent = this.options.itemClickEvent != undefined ? this.options.itemClickEvent : this.itemClickEvent;
+        }
     }
     ngAfterContentInit() {
         //console.log("----------");
@@ -27,11 +34,10 @@ export class NgxDatagridComponent implements OnInit, AfterContentInit {
         //console.log(this.headerComponent);
     }
 
-
-    // onSearch(){
-    //     console.log(this.search);
-    //     this.data =  this.data.filter(item => item.name.includes(this.search));
-    // }
+    onListItemClick(item:any){
+        if(this.itemClickEvent )
+            this.itemClick.emit(item);
+    }
 
     private identify(index, item) {
         return index;

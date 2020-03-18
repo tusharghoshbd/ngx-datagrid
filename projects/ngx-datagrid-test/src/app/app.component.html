@@ -1,16 +1,18 @@
 
 <div class="container">
-    <ngx-datagrid [data]="shipments"> 
+    <ngx-datagrid 
+        gridClass="list-group-item"
+        [data]="shipments"
+        [options]="options"
+        (itemClick)="onItemClick($event)"> 
         <ng-template let-rowDetail #header>
             <div style="padding-left:35px;">
-                <div>name</div>
                 <div>{{rowDetail.name}}</div>
             </div>
         </ng-template>
         <ng-template let-rowDetail #body>
             <div style="padding-left:35px;">
-                <div>destination</div>
-                <div>{{rowDetail.destination}}</div>
+                <div>{{rowDetail.description}}</div>
             </div>
         </ng-template>
     </ngx-datagrid>

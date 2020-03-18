@@ -1,26 +1,41 @@
-import { Component, OnInit, Input, ContentChildren, QueryList } from '@angular/core';
+import { Component, OnInit, Input, Output, TemplateRef, AfterContentInit, ContentChild, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'ngx-datagrid',
-  template: `
-    <ul class="list-group">
-        <a *ngFor="let item of data" class="cus-cursor-pointer list-group-item">
-            <div>{{item.name}}</div>
-        </a>
-    </ul>
-  `,
+  templateUrl:'./ngx-datagrid.component.html',
   styleUrls: ['./ngx-datagrid.component.css']
 })
-export class NgxDatagridComponent implements OnInit {
+export class NgxDatagridComponent implements OnInit, AfterContentInit {
 
     @Input() data :any;
+    @Input() gridClass :any;
+    @Input() options :any;
+    @Output() itemClick: EventEmitter<any> = new EventEmitter<any>();
+    @ContentChild('header',{static: false}) headerTemplateRef: TemplateRef<any>;
+    @ContentChild('body',{static: false}) bodyTemplateRef: TemplateRef<any>;
+    
+    searchText = "";
+    itemPerPage = 5;
+    itemPerPageDDL:any = [5,10,20,50];
+    itemClickEvent = true;
     constructor() { }
-    //@ContentChildren(TabComponent) tabList: QueryList<TabComponent>;
 
     ngOnInit() {
+        if(this.options){
+            this.itemPerPageDDL = this.options.itemPerPageDDL.length == 0 ? this.itemPerPageDDL : this.options.itemPerPageDDL;
+            this.itemPerPage =  this.itemPerPageDDL[0];
+            this.itemClickEvent = this.options.itemClickEvent != undefined ? this.options.itemClickEvent : this.itemClickEvent;
+        }
+    }
+    ngAfterContentInit() {
     }
 
-    identify(index, item) {
+    onListItemClick(item:any){
+        if(this.itemClickEvent )
+            this.itemClick.emit(item);
+    }
+
+    private identify(index, item) {
         return index;
     }
 
