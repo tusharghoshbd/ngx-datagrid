@@ -12,6 +12,9 @@
 As a prerequisite, you need [boostrap](https://getbootstrap.com/) library.
 
 ```angular
+npm i ng2-search-filter
+npm i ngx-pagination
+
 npm i @tusharghoshbd/ngx-datagrid
 ```
 
