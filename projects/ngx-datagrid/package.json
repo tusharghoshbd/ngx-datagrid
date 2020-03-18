@@ -1,6 +1,6 @@
 {
   "name": "@tusharghoshbd/ngx-datagrid",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Angular datagrid component using html",
   "main": "dist/ngx-datagrid",
   "author": "tusharghoshbd",
