@@ -12,7 +12,7 @@ export class AppComponent {
       itemClickEvent: true
   };
 
-  shipments  = [
+  data  = [
     {
       "id": "1",
       "name": "Abiy Ahmed Ali",

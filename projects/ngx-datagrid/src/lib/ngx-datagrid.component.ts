@@ -30,10 +30,15 @@ export class NgxDatagridComponent implements OnInit, AfterContentInit {
     }
     ngAfterContentInit() {
     }
-
     onListItemClick(item:any){
         if(this.itemClickEvent )
             this.itemClick.emit(item);
+    }
+    onInputSearch(){
+        this.currentPage = 1;
+    }
+    onChangeItemPerPage(){
+        this.currentPage = 1;
     }
 
     identify(index, item) {

@@ -1,24 +1,54 @@
-# NgxDatagrid
+# Ngx Data Grid
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.3.
+**Ngx Data Grid** is an angular library for presenting data in list. This library is easy to integrate in your angular component. This library supports search, pagination features. You can also customize this library as your requirements
 
-## Code scaffolding
+## Demo
+![](https://media1.giphy.com/media/PjOmTZRwIyGCH8jzvI/giphy.gif)
 
-Run `ng generate component component-name --project ngx-datagrid` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-datagrid`.
-> Note: Don't forget to add `--project ngx-datagrid` or else it will be added to the default project in your `angular.json` file. 
+[Demo in stackblitz](https://stackblitz.com/edit/ngx-datagrid?file=src/app/app.component.ts)
 
-## Build
+## Installation
 
-Run `ng build ngx-datagrid` to build the project. The build artifacts will be stored in the `dist/` directory.
+As a prerequisite, you need [boostrap](https://getbootstrap.com/) library.
 
-## Publishing
+```angular
+npm i @tusharghoshbd/ngx-datagrid
+```
 
-After building your library with `ng build ngx-datagrid`, go to the dist folder `cd dist/ngx-datagrid` and run `npm publish`.
 
-## Running unit tests
 
-Run `ng test ngx-datagrid` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Usage
 
-## Further help
+#### Html file
+```angular
+ <ngx-datagrid 
+        gridClass="list-group-item"
+        [data]="data"
+        [options]="options"
+        (itemClick)="onItemClick($event)"> 
+        <ng-template let-rowDetail #header>
+            <!-- your code for header-->
+        </ng-template>
+        <ng-template let-rowDetail #body>
+            <!-- your code for body-->
+        </ng-template>
+ </ngx-datagrid>
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+#### Ts file
+```angular
+options:any={
+    itemPerPageDDL : [5, 10, 20, 30],
+    itemClickEvent: true
+};
+
+data  = []
+```
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)

@@ -1,6 +1,25 @@
 {
-  "name": "ngx-datagrid",
-  "version": "0.0.1",
+  "name": "@tusharghoshbd/ngx-datagrid",
+  "version": "1.0.0",
+  "description": "Angular datagrid component using html",
+  "main": "dist/ngx-datagrid",
+  "author": "tusharghoshbd",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tusharghoshbd/ngx-datagrid"
+  },
+  "keywords": [
+    "ng datatable",
+    "datagrid",
+    "Datatable",
+    "Grid",
+    "Angular",
+    "ngx datagrid",
+    "data grid",
+    "angular data table",
+    "ngx data liar item"
+  ],
   "peerDependencies": {
     "@angular/common": "^8.1.3",
     "@angular/core": "^8.1.3",

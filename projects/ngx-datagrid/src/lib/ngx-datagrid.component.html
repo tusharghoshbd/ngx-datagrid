@@ -2,7 +2,7 @@
     <div class="col-sm-6 col-xs-9">
         <div class="form-group">
             <form class="form-inline">
-                <input   [(ngModel)]="searchText" 
+                <input (input)="onInputSearch()"  [(ngModel)]="searchText" 
                     name="search"
                     autocomplete="off"
                     class="form-control mr-sm-2" 
@@ -13,14 +13,12 @@
     <div class="col-sm-6 col-xs-3">
         <div class="form-group text-right" >
             <form class="form-inline text-right">
-                <select  [(ngModel)]="itemPerPage" name="itemPerPage" class="form-control" id="exampleFormControlSelect1">
+                <select (change)="onChangeItemPerPage()"  [(ngModel)]="itemPerPage" name="itemPerPage" class="form-control" id="exampleFormControlSelect1">
                     <option *ngFor="let item of itemPerPageDDL" [ngValue]="item">{{item}}</option>
                 </select>
             </form>
         </div>
-
     </div>
-    
 </div>
 <ul class="list-group">
     <li *ngFor="let rowDetail of data | filter:searchText | paginate: { itemsPerPage: itemPerPage, currentPage:currentPage }; trackBy: identify" class="{{gridClass}}">
@@ -44,7 +42,6 @@
     <li *ngIf="data.length == 0" class="cus-cursor-pointer list-group-item">
         Data is not available.
     </li>
-    <!-- <header>tttt</header> -->
 </ul>
 <div class="row">
     <div class="col-sm-12 col-xs-12 ">

@@ -1,8 +1,8 @@
-
+<br/>
 <div class="container">
     <ngx-datagrid 
         gridClass="list-group-item"
-        [data]="shipments"
+        [data]="data"
         [options]="options"
         (itemClick)="onItemClick($event)"> 
         <ng-template let-rowDetail #header>
@@ -16,6 +16,4 @@
             </div>
         </ng-template>
     </ngx-datagrid>
-
-    
 </div>

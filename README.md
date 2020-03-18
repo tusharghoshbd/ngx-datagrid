@@ -1,27 +1,54 @@
-# NgxDatagrid
+# Ngx Data Grid
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.2.
+**Ngx Data Grid** is an angular library for presenting data in list. This library is easy to integrate in your angular component. This library supports search, pagination features. You can also customize this library as your requirements
 
-## Development server
+## Demo
+![](https://media1.giphy.com/media/PjOmTZRwIyGCH8jzvI/giphy.gif)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+[Demo in stackblitz](https://stackblitz.com/edit/ngx-datagrid?file=src/app/app.component.ts)
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+As a prerequisite, you need [boostrap](https://getbootstrap.com/) library.
 
-## Build
+```angular
+npm i @tusharghoshbd/ngx-datagrid
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Usage
 
-## Running end-to-end tests
+#### Html file
+```angular
+ <ngx-datagrid 
+        gridClass="list-group-item"
+        [data]="data"
+        [options]="options"
+        (itemClick)="onItemClick($event)"> 
+        <ng-template let-rowDetail #header>
+            <!-- your code for header-->
+        </ng-template>
+        <ng-template let-rowDetail #body>
+            <!-- your code for body-->
+        </ng-template>
+ </ngx-datagrid>
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+#### Ts file
+```angular
+options:any={
+    itemPerPageDDL : [5, 10, 20, 30],
+    itemClickEvent: true
+};
 
-## Further help
+data  = []
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
