@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,7 @@ export class AppComponent {
   title = 'ngx-datagrid-test';
   options:any={
       itemPerPageDDL : [5, 10, 20, 30],
-      itemClickEvent: true
+      itemClickEvent: false
   };
 
   data  = [
@@ -83,7 +83,9 @@ export class AppComponent {
       },
   ];
 
-
+  @HostListener('click') onMouseOver() {
+        console.log("hi test");
+    }
 
   onItemClick(item:any){
         alert(JSON.stringify(item))

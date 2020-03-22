@@ -3,5 +3,9 @@
   "dest": "../../dist/ngx-datagrid",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": [
+    "ngx-pagination",
+    "ng2-search-filter"
+  ]
 }
