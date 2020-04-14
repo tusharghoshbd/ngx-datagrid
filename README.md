@@ -5,6 +5,8 @@
 ## Demo
 ![](https://media1.giphy.com/media/PjOmTZRwIyGCH8jzvI/giphy.gif)
 
+[Demo in example](https://tusharghoshbd.github.io/ngx-datagrid/)
+
 [Demo in stackblitz](https://stackblitz.com/edit/ngx-datagrid?file=src/app/app.component.ts)
 
 ## Installation
@@ -44,6 +46,8 @@ options:any={
 
 data  = []
 ```
+
+**Note:** When you use button click event in body or header that time itemClickEvent must be false.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
