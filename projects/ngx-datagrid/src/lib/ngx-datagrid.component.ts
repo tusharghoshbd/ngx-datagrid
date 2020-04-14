@@ -7,6 +7,7 @@ import { Component, OnInit, Input, Output, TemplateRef, AfterContentInit, Conten
 })
 export class NgxDatagridComponent implements OnInit, AfterContentInit {
 
+    @Input() gridId = 'ngxDataGridId';
     @Input() data :any;
     @Input() gridClass :any;
     @Input() options :any;
@@ -18,7 +19,7 @@ export class NgxDatagridComponent implements OnInit, AfterContentInit {
     itemPerPage = 5;
     itemPerPageDDL:any = [5,10,20,50];
     currentPage = 1;
-    itemClickEvent = true;
+    itemClickEvent = false;
     constructor() { }
 
     ngOnInit() {

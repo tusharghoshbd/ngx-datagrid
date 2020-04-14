@@ -11,10 +11,7 @@
 
 As a prerequisite, you need [boostrap](https://getbootstrap.com/) library.
 
-```angular
-npm i ng2-search-filter
-npm i ngx-pagination
-
+```ts
 npm i @tusharghoshbd/ngx-datagrid
 ```
 
@@ -23,7 +20,7 @@ npm i @tusharghoshbd/ngx-datagrid
 ## Usage
 
 #### Html file
-```angular
+```html
  <ngx-datagrid 
         gridClass="list-group-item"
         [data]="data"
@@ -39,10 +36,10 @@ npm i @tusharghoshbd/ngx-datagrid
 ```
 
 #### Ts file
-```angular
+```ts
 options:any={
-    itemPerPageDDL : [5, 10, 20, 30],
-    itemClickEvent: true
+    itemPerPageDDL : [5, 10, 20, 30], // default
+    itemClickEvent: true   //default, true|false
 };
 
 data  = []

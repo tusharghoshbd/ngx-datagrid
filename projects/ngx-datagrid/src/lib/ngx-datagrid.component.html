@@ -1,50 +1,51 @@
 <div class="row">
-    <div class="col-sm-6 col-xs-9">
-        <div class="form-group">
-            <form class="form-inline">
+    <div class="col-6 col-sm-6 col-xs-9">
+        <label  style="font-weight: 100;">
                 <input (input)="onInputSearch()"  [(ngModel)]="searchText" 
+                    [id]="'search_'+gridId"
                     name="search"
                     autocomplete="off"
                     class="form-control mr-sm-2" 
                     type="text" placeholder="Search"/>
-            </form>
-        </div> 
+        </label> 
     </div>
-    <div class="col-sm-6 col-xs-3">
-        <div class="form-group text-right" >
-            <form class="form-inline text-right">
-                <select (change)="onChangeItemPerPage()"  [(ngModel)]="itemPerPage" name="itemPerPage" class="form-control" id="exampleFormControlSelect1">
+    <div class=" col-6 col-sm-6 col-xs-3 text-right">
+        <label class="form-group text-right"  style="font-weight: 100;" >
+                <select (change)="onChangeItemPerPage()"  [(ngModel)]="itemPerPage" name="itemPerPage" class="form-control" [id]="'itemPerPage_'+gridId">
                     <option *ngFor="let item of itemPerPageDDL" [ngValue]="item">{{item}}</option>
                 </select>
-            </form>
-        </div>
+        </label>
     </div>
 </div>
-<ul class="list-group">
-    <li *ngFor="let rowDetail of data | filter:searchText | paginate: { itemsPerPage: itemPerPage, currentPage:currentPage }; trackBy: identify" class="{{gridClass}}">
-        <div [ngClass]="itemClickEvent ? 'cus-cursor-pointer' : ''"  (click)="onListItemClick(rowDetail)">
-            <strong>
-                <ng-container
-                    *ngIf="headerTemplateRef"
-                    [ngTemplateOutlet]="headerTemplateRef"
-                    [ngTemplateOutletContext]="{$implicit:rowDetail}"
-                >
-                </ng-container>
-            </strong>
-            <ng-container
-                *ngIf="bodyTemplateRef"
-                [ngTemplateOutlet]="bodyTemplateRef"
-                [ngTemplateOutletContext]="{$implicit:rowDetail}"
-            >
-            </ng-container>
-        </div>
-    </li>
-    <li *ngIf="data.length == 0" class="cus-cursor-pointer list-group-item">
-        Data is not available.
-    </li>
-</ul>
 <div class="row">
-    <div class="col-sm-12 col-xs-12 ">
-        <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+    <div class="col-sm-12 col-xs-12  col-12">
+        <ul [id]="gridId" class="list-group">
+            <li *ngFor="let rowDetail of data | filter:searchText | paginate: {id: 'pagination_'+gridId, itemsPerPage: itemPerPage, currentPage:currentPage }; trackBy: identify" class="{{gridClass}}">
+                <div [ngClass]="itemClickEvent ? 'cus-cursor-pointer' : ''"  (click)="onListItemClick(rowDetail)">
+                    <strong>
+                        <ng-container
+                            *ngIf="headerTemplateRef"
+                            [ngTemplateOutlet]="headerTemplateRef"
+                            [ngTemplateOutletContext]="{$implicit:rowDetail}"
+                        >
+                        </ng-container>
+                    </strong>
+                    <ng-container
+                        *ngIf="bodyTemplateRef"
+                        [ngTemplateOutlet]="bodyTemplateRef"
+                        [ngTemplateOutletContext]="{$implicit:rowDetail}"
+                    >
+                    </ng-container>
+                </div>
+            </li>
+            <li *ngIf="data.length == 0" class="cus-cursor-pointer list-group-item">
+                Data is not available.
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-xs-12  col-12 custom-pagination-align">
+        <pagination-controls [id]="'pagination_'+gridId" (pageChange)="currentPage = $event"></pagination-controls>
     </div>
 </div>

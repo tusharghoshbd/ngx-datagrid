@@ -9,7 +9,7 @@ export class AppComponent {
   title = 'ngx-datagrid-test';
   options:any={
       itemPerPageDDL : [5, 10, 20, 30],
-      itemClickEvent: false
+      itemClickEvent: true
   };
 
   data  = [
@@ -83,13 +83,13 @@ export class AppComponent {
       },
   ];
 
-  @HostListener('click') onMouseOver() {
-        console.log("hi test");
-    }
-
   onItemClick(item:any){
         alert(JSON.stringify(item))
         console.log(item);
   }
+    
+    // onClickButton(name) { 
+    //     alert(name);
+    // }
     
 }

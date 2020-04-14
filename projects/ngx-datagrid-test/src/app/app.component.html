@@ -1,20 +1,22 @@
 <br/>
 <div class="container">
     <ngx-datagrid 
+        [gridId]="'basic'"
         gridClass="list-group-item"
         [data]="data"
         [options]="options"
         (itemClick)="onItemClick($event)"> 
         <ng-template let-rowDetail #header>
-            <div style="padding-left:35px;">
+            <div >
                 <div>{{rowDetail.name}}</div>
             </div>
         </ng-template>
         <ng-template let-rowDetail #body>
-            <div style="padding-left:35px;">
+            <div >
                 <div>{{rowDetail.description}}</div>
                 <div>
-                    <button type="button" class="btn btn-primary detail">Show detail</button>
+                    <!-- (click)="onClickButton(rowDetail.name)" -->
+                    <button type="button" class="btn btn-primary detail" >Show detail</button>
                 </div>
             </div>
         </ng-template>
